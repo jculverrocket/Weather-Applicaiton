@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import Navigation from './components/Navigation';
 
 function App() {
+
+const [weatherData, setWeatherData] = useState([])
+const [errorMessage, setErrorMessage] = useState(null)
+
+const fetchWeatherData = () => {
+  fetch("http://localhost:8000/weatherData")
+  .then(resp => resp.json())
+  .then(data => {
+    console.log(data)
+    setWeatherData(data)
+  })
+  .catch(err => setErrorMessage(err.message))
+}
+
+useEffect(() => {
+  fetchWeatherData()
+}, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-        Weather Application 
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Weather Application</h1>
+      <Navigation weatherData={weatherData}/>
     </div>
   );
 }
