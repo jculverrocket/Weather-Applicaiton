@@ -9,7 +9,6 @@ const WeatherData = () => {
         fetch(`http://localhost:8000/weatherData/${id}`)
         .then(resp => resp.json())
         .then(data => {
-            console.log(data, 'data test')
           setWeatherHistory(data.temp)
         })
         .catch(err => setErrorMessage(err.message))
@@ -20,7 +19,8 @@ const WeatherData = () => {
       },[])
 
       const convertDate = (timestamp) => {
-        return new Date(timestamp);
+        timestamp = timestamp * 1000
+        return new Date(timestamp).toLocaleDateString("en-US");
       }
       
 

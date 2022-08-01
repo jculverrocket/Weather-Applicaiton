@@ -11,7 +11,7 @@ const fetchWeatherData = () => {
   fetch("http://localhost:8000/weatherData")
   .then(resp => resp.json())
   .then(data => {
-    console.log(data)
+    console.log(data, 'this is our data')
     setWeatherData(data)
   })
   .catch(err => setErrorMessage(err.message))
