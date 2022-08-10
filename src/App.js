@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Navigation from './components/Navigation';
+import { url } from './helpers';
 
 function App() {
 
@@ -8,12 +9,11 @@ const [weatherData, setWeatherData] = useState([])
 const [errorMessage, setErrorMessage] = useState(null)
 
 const fetchWeatherData = () => {
-  fetch("http://localhost:8000/weatherData")
+  fetch(url)
   .then(resp => resp.json())
-  .then(data => {
-    console.log(data, 'this is our data')
+  .then(data => 
     setWeatherData(data)
-  })
+  )
   .catch(err => setErrorMessage(err.message))
 }
 

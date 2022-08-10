@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { url } from '../helpers'
 
 const WeatherData = () => {
     const id = window.location.pathname.split("/").pop()
@@ -6,7 +7,7 @@ const WeatherData = () => {
     const [errorMessage, setErrorMessage] = useState("")
 
     const fetchStationData = () => {
-        fetch(`http://localhost:8000/weatherData/${id}`)
+        fetch(`${url}/${id}`)
         .then(resp => resp.json())
         .then(data => {
           setWeatherHistory(data.temp)
@@ -23,7 +24,6 @@ const WeatherData = () => {
         return new Date(timestamp).toLocaleDateString("en-US");
       }
       
-
     return (
         <div>
             <ul class="list-group">
