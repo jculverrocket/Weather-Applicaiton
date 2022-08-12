@@ -30,8 +30,8 @@ const WeatherData = () => {
                             <li class="list-group-item">
                             <h5>{item.Date}</h5>
                             <p>{item.Temp} Fahrenheit </p>
-                            <p>low:{item.TempC} Celsius</p>
-                            <p>high:{item.Prec} Precipitation</p>
+                            <p>{item.TempC} Celsius</p>
+                            <p>{item.Prec} Precipitation</p>
                         </li>
                         )}
                       
