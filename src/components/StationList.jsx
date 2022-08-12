@@ -2,13 +2,14 @@ import React from "react";
 import StationCard from "./StationCard";
 
 const StationList = (props) => {
+    console.log(props, 'props')
     return (
         <div>
         { 
-            props.weatherData.map(data => {
+            props.stationData.map(data => {
                 return (
                     <StationCard data={data}/> 
-                )})
+                )})   
         }
         </div>
     )

@@ -7,14 +7,12 @@ const StationCard = (props) => {
     return (
     <div className="card">
         <div className="card-body">
-            <h5 className="card-title"> {props.data.weather_station}</h5>
-            <h6 className="card-subtitle mb-2 text-muted">{props.data.region}</h6>
-            <Link to={`station/${props.data.id}`}>Details</Link>
+            <h5 className="card-title"> {props.data.ID}</h5>
+            <Link to={`station/${props.data.ID}`}>Details</Link>
         </div>
     </div>
     )
 
 }
-
 
 export default StationCard;

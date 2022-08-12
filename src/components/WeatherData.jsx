@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { url } from '../helpers'
+import { getStationData } from '../helpers'
 
 const WeatherData = () => {
     const id = window.location.pathname.split("/").pop()
@@ -7,10 +7,11 @@ const WeatherData = () => {
     const [errorMessage, setErrorMessage] = useState("")
 
     const fetchStationData = () => {
-        fetch(`${url}/${id}`)
+        // getStationData(id)
+        getStationData()
         .then(resp => resp.json())
         .then(data => {
-          setWeatherHistory(data.temp)
+          setWeatherHistory(data.Date)
         })
         .catch(err => setErrorMessage(err.message))
       }
@@ -18,11 +19,6 @@ const WeatherData = () => {
       useEffect(() => {
         fetchStationData()
       },[])
-
-      const convertDate = (timestamp) => {
-        timestamp = timestamp * 1000
-        return new Date(timestamp).toLocaleDateString("en-US");
-      }
       
     return (
         <div>
@@ -32,11 +28,10 @@ const WeatherData = () => {
                         {
                         return(
                             <li class="list-group-item">
-                            <h5>{`${convertDate(item.date)}`}</h5>
-                            <p>high:{item.fahrenheit.high} F</p>
-                            <p>low:{item.fahrenheit.low} F</p>
-                            <p>high:{item.celsius.high} C</p>
-                            <p>low:{item.celsius.low} C</p>
+                            <h5>{item.Date}</h5>
+                            <p>{item.Temp} Fahrenheit </p>
+                            <p>low:{item.TempC} Celsius</p>
+                            <p>high:{item.Prec} Precipitation</p>
                         </li>
                         )}
                       
