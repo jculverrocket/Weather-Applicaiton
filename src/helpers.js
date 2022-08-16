@@ -1,5 +1,5 @@
 
-const url = 'http://localhost:7171/UVT/subroutine/GET.STATION'
+const url = 'http://dendevjmc01.dev.rocketsoftware.com:7171/UVT/subroutine/GET.STATION'
 
 
 // export const getStations = () => {
@@ -13,23 +13,25 @@ const url = 'http://localhost:7171/UVT/subroutine/GET.STATION'
 //The fetch calls we will use with MVIS:
 
 export const getStations = () => {
-    return fetch(url, {
-        Method: 'POST',
+    return fetch(url + 'S', {
+        method: 'POST',
+        mode: 'no-cors',
         Headers: {
             'Content-Type': 'application/json'
         },
-        Body: {}
+        body: JSON.stringify({})
     })
  }
 
 export const getStationData = (stationId) => {
     return fetch(url, {
-        Method: 'POST',
-        Headers: {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
             'Content-Type': 'application/json'
         },
-        Body: {
+        body: JSON.stringify({
             "in_param_1": stationId
-        }
+        })
     })
 }
