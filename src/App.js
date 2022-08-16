@@ -11,9 +11,9 @@ const fetchStationData = () => {
    getStations()
   .then(resp => resp.json())
   .then(data => {
-    setStationData(data)
+    setStationData(data.out_param_1)
   })
-  .catch(err => console.log(err.message))
+  .catch(err => console.log(err, 'error from'))
 }
 
 useEffect(() => {

@@ -2,7 +2,7 @@ import React from "react";
 import StationCard from "./StationCard";
 
 const StationList = (props) => {
-    console.log(props, 'props')
+    
     return (
         <div>
         { 

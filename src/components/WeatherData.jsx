@@ -4,16 +4,14 @@ import { getStationData } from '../helpers'
 const WeatherData = () => {
     const id = window.location.pathname.split("/").pop()
     const [weatherHistory, setWeatherHistory] = useState([])
-    const [errorMessage, setErrorMessage] = useState("")
 
     const fetchStationData = () => {
-        // getStationData(id)
-        getStationData()
+        getStationData(id)
         .then(resp => resp.json())
         .then(data => {
-          setWeatherHistory(data.Date)
+          setWeatherHistory(data.out_param_2.Date)
         })
-        .catch(err => setErrorMessage(err.message))
+        .catch(err => console.log(err))
       }
       
       useEffect(() => {
