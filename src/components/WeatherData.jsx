@@ -114,6 +114,7 @@ const WeatherData = () => {
                       <Tooltip />
                       <Area type="monotone" dataKey="Temp" stroke="#8884d8" fillOpacity={1} fill="url(#colorF)" />
                       <Area type="monotone" dataKey="TempC" stroke="#82ca9d" fillOpacity={1} fill="url(#colorC)" />
+                      <Legend />
                     </AreaChart>
                 }
             </ul>
